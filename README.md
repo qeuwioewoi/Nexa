@@ -146,6 +146,9 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 AI Coding Assistant, Code Analysis, File Generation, Code Editing, Gradio, Together.ai, LLaMA 2, Starcoder, Mistral 7B, JSON Mode, Function Calling, Open-Source, Developer Tools, Python, JavaScript, Java, C++, Debugging, Optimization, Best Practices.
 
+
+Be a king and star this repo.
+
 ---
 
 ## Support
