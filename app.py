@@ -598,9 +598,9 @@ def execute_tool(tool_name: str, params: Dict[str, str]) -> str:
         console.print(f"[red]✗ Error:[/red] Unknown tool requested for execution: '{tool_name}'", style="bold red")
         return f"<tool_result tool_name=\"{tool_name}\"><status>error</status><message>Unknown tool requested.</message></tool_result>"
 
-# --- Core Interaction Logic (NATS Simulation) ---
-# This loop simulates the autonomous task sequencing.
-# A true NATS would involve more complex planning, state management, and error recovery.
+# --- Core Interaction & Task Sequencing Logic ---
+# This loop manages the turn-by-turn interaction between the user, LLM, and tools.
+# It represents the current level of task execution capability.
 MAX_TURNS = 10 # Safety limit for conversation length
 
 def run_conversation_turn(history: List[Dict[str, str]]) -> Tuple[str, Optional[str], Optional[Dict[str, str]], bool]:
@@ -707,7 +707,7 @@ def chat_with_nexa(message: str, history_state: List[Dict[str, str]]):
     # Prepare the output log string
     output_log = f"User: {message}\n\n"
 
-    # --- Autonomous Loop (NATS Simulation) ---
+    # --- Iterative Task Execution Loop ---
     for turn in range(MAX_TURNS):
         console.print(f"\n--- Turn {turn + 1}/{MAX_TURNS} ---")
 
@@ -777,7 +777,7 @@ interface = gr.Interface(
         chatbot_output,
         gr.State() # Output the updated state
     ],
-    title="Nexa - Autonomous AI Coding Assistant (Concept v2.1)",
+    title="Nexa - AI Coding Assistant (Concept v2.2)", # Incremented version
     description=(
         "Welcome to Nexa! Enter your request. Nexa will use tools iteratively (up to 10 turns) to try and fulfill it. "
         f"\nWorking Directory: `{cwd.as_posix()}`"
